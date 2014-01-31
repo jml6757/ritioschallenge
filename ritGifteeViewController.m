@@ -7,6 +7,7 @@
 //
 
 #import "ritGifteeViewController.h"
+#import "ritNewContactViewController.h"
 
 @interface ritGifteeViewController ()
 
@@ -134,8 +135,18 @@
             break;
         case 1:
             //New contact
+            [self performSegueWithIdentifier:@"NewContactSegue" sender:(self)];
         default:
             break;
     }
+}
+
+- (IBAction)unwindToGifteeViewController:(UIStoryboardSegue *)unwindSegue
+{
+}
+- (IBAction)unwindToGifteeViewControllerWithInfo:(UIStoryboardSegue *)unwindSegue
+{
+    ritNewContactViewController* sourceController = unwindSegue.sourceViewController;
+    //sourceController.contactName
 }
 @end

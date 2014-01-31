@@ -10,5 +10,6 @@
 
 @interface ritGifteeViewController : UITableViewController <UIActionSheetDelegate>
 - (IBAction)addGiftee:(id)sender;
-
+- (IBAction)unwindToGifteeViewController:(UIStoryboardSegue *)unwindSegue;
+- (IBAction)unwindToGifteeViewControllerWithInfo:(UIStoryboardSegue *)unwindSegue;
 @end
