@@ -19,6 +19,7 @@
 		3F1EE6CB189B34650076B69B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F1EE6B3189B34650076B69B /* UIKit.framework */; };
 		3F1EE6D3189B34650076B69B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3F1EE6D1189B34650076B69B /* InfoPlist.strings */; };
 		3F1EE6D5189B34650076B69B /* ritioschallengeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F1EE6D4189B34650076B69B /* ritioschallengeTests.m */; };
+		3F1EE6DF189B36180076B69B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F1EE6DE189B36180076B69B /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		3F1EE6D0189B34650076B69B /* ritioschallengeTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ritioschallengeTests-Info.plist"; sourceTree = "<group>"; };
 		3F1EE6D2189B34650076B69B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		3F1EE6D4189B34650076B69B /* ritioschallengeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ritioschallengeTests.m; sourceTree = "<group>"; };
+		3F1EE6DE189B36180076B69B /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 		3F1EE6A3189B34650076B69B = {
 			isa = PBXGroup;
 			children = (
+				3F1EE6DE189B36180076B69B /* Main.storyboard */,
 				3F1EE6B5189B34650076B69B /* ritioschallenge */,
 				3F1EE6CE189B34650076B69B /* ritioschallengeTests */,
 				3F1EE6AE189B34650076B69B /* Frameworks */,
@@ -220,6 +223,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F1EE6DF189B36180076B69B /* Main.storyboard in Resources */,
 				3F1EE6BA189B34650076B69B /* InfoPlist.strings in Resources */,
 				3F1EE6C2189B34650076B69B /* Images.xcassets in Resources */,
 			);
