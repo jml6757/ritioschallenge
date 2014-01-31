@@ -131,6 +131,7 @@
     
     switch (buttonIndex) {
         case 0:
+            
             //Bring up address book
             break;
         case 1:

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>982F53AC-7163-4371-B911-3972686D8571</string>
+	<key>IDESourceControlProjectName</key>
+	<string>ritioschallenge</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>B08D52A8-A7D5-4239-A719-20D75C943085</key>
+		<string>https://github.com/jml6757/ritioschallenge</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>ritioschallenge.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>B08D52A8-A7D5-4239-A719-20D75C943085</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/jml6757/ritioschallenge</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>B08D52A8-A7D5-4239-A719-20D75C943085</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>B08D52A8-A7D5-4239-A719-20D75C943085</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ritioschallenge</string>
+		</dict>
+	</array>
+</dict>
+</plist>

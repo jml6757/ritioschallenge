@@ -22,6 +22,7 @@
 		3F1EE6DF189B36180076B69B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F1EE6DE189B36180076B69B /* Main.storyboard */; };
 		3F1EE6E2189B39880076B69B /* ritGifteeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F1EE6E1189B39880076B69B /* ritGifteeViewController.m */; };
 		3F1EE6E5189B462B0076B69B /* ritNewContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F1EE6E4189B462B0076B69B /* ritNewContactViewController.m */; };
+		B050D478189B63CC00E2E755 /* ritDatabaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B050D477189B63CC00E2E755 /* ritDatabaseManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,8 @@
 		3F1EE6E1189B39880076B69B /* ritGifteeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ritGifteeViewController.m; sourceTree = "<group>"; };
 		3F1EE6E3189B462B0076B69B /* ritNewContactViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ritNewContactViewController.h; sourceTree = "<group>"; };
 		3F1EE6E4189B462B0076B69B /* ritNewContactViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ritNewContactViewController.m; sourceTree = "<group>"; };
+		B050D476189B63CC00E2E755 /* ritDatabaseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ritDatabaseManager.h; sourceTree = "<group>"; };
+		B050D477189B63CC00E2E755 /* ritDatabaseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ritDatabaseManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +88,8 @@
 		3F1EE6A3189B34650076B69B = {
 			isa = PBXGroup;
 			children = (
+				B050D476189B63CC00E2E755 /* ritDatabaseManager.h */,
+				B050D477189B63CC00E2E755 /* ritDatabaseManager.m */,
 				3F1EE6E3189B462B0076B69B /* ritNewContactViewController.h */,
 				3F1EE6E4189B462B0076B69B /* ritNewContactViewController.m */,
 				3F1EE6E0189B39880076B69B /* ritGifteeViewController.h */,
@@ -257,6 +262,7 @@
 				3F1EE6E5189B462B0076B69B /* ritNewContactViewController.m in Sources */,
 				3F1EE6E2189B39880076B69B /* ritGifteeViewController.m in Sources */,
 				3F1EE6C0189B34650076B69B /* ritAppDelegate.m in Sources */,
+				B050D478189B63CC00E2E755 /* ritDatabaseManager.m in Sources */,
 				3F1EE6BC189B34650076B69B /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -458,6 +464,7 @@
 				3F1EE6DA189B34650076B69B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3F1EE6DB189B34650076B69B /* Build configuration list for PBXNativeTarget "ritioschallengeTests" */ = {
 			isa = XCConfigurationList;
@@ -466,6 +473,7 @@
 				3F1EE6DD189B34650076B69B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
