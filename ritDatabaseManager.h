@@ -8,18 +8,23 @@
 
 #import <Foundation/Foundation.h>
 #import <sqlite3.h>
+
 @interface ritDatabaseManager : NSObject
 
+    - (void) addContact:    (NSString*) contact;
+    - (void) deleteContact: (NSString*) contact;
+    - (void) readDbContacts;
 
-@property (strong, nonatomic) IBOutlet UITextField *name;
+    - (BOOL) hasContact:    (NSString*) contact;
+    - (int) getContactID:   (NSString*) contact;
 
-- (IBAction) addContact:(id)sender;
-- (IBAction) deleteContact: (id) sender;
-- (IBAction) getContact: (id) sender;
-- (IBAction) getAllContacts: (id) sender;
+    //Path to the database
+    @property (strong, nonatomic) NSString *dbPath;
 
-@property (strong, nonatomic) NSString *dbPath;
-@property (nonatomic) sqlite3 *contactDB;
+    //Array of contact names (strings) which is accessible from outside
+    @property (strong, nonatomic) IBOutlet NSMutableArray *contacts;
 
+    //Database of contact names
+    @property (nonatomic) sqlite3 *contactDB;
 
 @end

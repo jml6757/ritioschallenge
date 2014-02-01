@@ -8,6 +8,9 @@
 
 #import "ritGifteeViewController.h"
 #import "ritNewContactViewController.h"
+#import "ritShopScreenViewController.h"
+#import "ritProfileViewController.h"
+#import "ritRemoteDataManager.h"
 
 @interface ritGifteeViewController ()
 
@@ -24,10 +27,53 @@
     return self;
 }
 
+- (void) tableView: (UITableView *) tableView didSelectRowAtIndexPath: (NSIndexPath *) indexPath
+{
+    _selectedContact = [tableView cellForRowAtIndexPath:indexPath].textLabel.text;
+    [self performSegueWithIdentifier:@"ShopScreenSegue" sender:(self)];
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    
+    NSLog(@"prepareForSegue: %@", segue.identifier);
+    if([segue.identifier isEqualToString:@"ShopScreenSegue"])
+    {
+        ritShopScreenViewController *sequeView = segue.destinationViewController;
+        sequeView.contact = _selectedContact;
+    }
+}
+
+-(void)handleLongPress:(UILongPressGestureRecognizer *)gestureRecognizer
+{
+    CGPoint p = [gestureRecognizer locationInView:self.tableView];
+    
+    NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:p];
+    if (indexPath != nil)
+    {
+        //NSLog(@"long press on table view but not on a row");
+        ritProfileViewController* profileView = [[ritProfileViewController alloc] init];
+        profileView.modalPresentationStyle =  UIModalTransitionStyleCrossDissolve;
+        [self presentViewController:profileView animated:YES completion:nil];
+    }
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
+    //Add long press recognizer
+    UILongPressGestureRecognizer *lpgr = [[UILongPressGestureRecognizer alloc]
+                                          initWithTarget:self action:@selector(handleLongPress:)];
+    lpgr.minimumPressDuration = 2.0; //seconds
+    lpgr.delegate = self;
+    [self.tableView addGestureRecognizer:lpgr];
+    
+    //Add database manager
+    _dbManager = [[ritDatabaseManager alloc] init];
+    
+    
+    ritRemoteDataManager* dataManager = [[ritRemoteDataManager alloc] init];
+    [dataManager postContact:@"Mohsin" withAttributes:nil];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -45,25 +91,29 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    return [_dbManager.contacts count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
     static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     // Configure the cell...
-    
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier ];
+        [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
+        cell.textLabel.text = [_dbManager.contacts objectAtIndex:(indexPath.row)];
+    }
     return cell;
 }
 
@@ -82,7 +132,11 @@
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
+        [_dbManager deleteContact:[tableView cellForRowAtIndexPath:indexPath].textLabel.text];
+        //NSLog(@"%@", indexPath);
+        //NSLog(@"%@", [tableView cellForRowAtIndexPath:indexPath].textLabel.text);
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        //[tableView reloadData];
     }   
     else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
@@ -131,7 +185,6 @@
     
     switch (buttonIndex) {
         case 0:
-            
             //Bring up address book
             break;
         case 1:
@@ -142,12 +195,19 @@
     }
 }
 
+
 - (IBAction)unwindToGifteeViewController:(UIStoryboardSegue *)unwindSegue
 {
+    //updateList();
 }
 - (IBAction)unwindToGifteeViewControllerWithInfo:(UIStoryboardSegue *)unwindSegue
 {
     ritNewContactViewController* sourceController = unwindSegue.sourceViewController;
-    //sourceController.contactName
+    NSString* newName = sourceController.contactName.text;
+    if([newName length] > 0 && ([_dbManager hasContact:newName] == NO))
+    {
+        [_dbManager addContact:sourceController.contactName.text];
+    }
+    [self.tableView reloadData];
 }
 @end

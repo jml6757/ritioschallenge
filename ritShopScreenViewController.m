@@ -1,18 +1,14 @@
 //
-//  ritNewContactViewController.m
+//  ritShopScreenViewController.m
 //  ritioschallenge
 //
-//  Created by Student on 1/30/14.
+//  Created by Kassaundra Porres on 1/31/14.
 //  Copyright (c) 2014 Student. All rights reserved.
 //
 
-#import "ritNewContactViewController.h"
+#import "ritShopScreenViewController.h"
 
-@interface ritNewContactViewController ()
-
-@end
-
-@implementation ritNewContactViewController
+@implementation ritShopScreenViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -26,6 +22,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    //NSLog(@"%@", _sender);
+    self.title = _contact;
 	// Do any additional setup after loading the view.
 }
 
@@ -33,6 +31,10 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)unwindToShopScreenViewController:(UIStoryboardSegue *)unwindSegue
+{
 }
 
 @end

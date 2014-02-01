@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface ritNewContactViewController : UIViewController
-@property (weak, nonatomic) IBOutlet UITextField *contactName;
-- (IBAction)unwindToThisViewController:(UIStoryboardSegue *)unwindSegue;
+
+    @property (weak, nonatomic) IBOutlet UITextField *contactName;
+
 @end
