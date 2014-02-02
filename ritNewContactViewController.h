@@ -11,5 +11,6 @@
 @interface ritNewContactViewController : UIViewController
 
     @property (weak, nonatomic) IBOutlet UITextField *contactName;
+    @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @end

@@ -91,10 +91,40 @@
     [attr setAttribute:@"toys"        withValue:@"0"];
 
     
-    [dataManager postContact:@"Mohsin" withAttributes:attr];
-    //[dataManager getAttributes:@"Mohsin"];
+    //[dataManager postContact:@"Mohsin" withAttributes:attr];
+    //ritAttributes* a = [dataManager getAttributes:@"Mohsin"];
+    //NSLog(@"%@", a.dict);
     
-    [dataManager getSuggestions:@"Mohsin"];
+    
+    //ritProduct* prod;
+    //NSArray* prods = [dataManager getSuggestions:@"Mohsin"];
+//    for( int i = 0; i < [prods count]; ++i)
+//    {
+//        prod = prods[i];
+//        NSLog(@"%@", prod.dict);
+//    }
+//    prod = prods[0];
+//    [dataManager postFavorite:@"Mohsin" withASIN:[prod ASIN]];
+    
+//    NSArray* favs = [dataManager getFavorites:@"Mohsin"];
+//    ritProduct* prod;
+//    for( int i = 0; i < [favs count]; ++i)
+//    {
+//        prod = favs[i];
+//        NSLog(@"%@", prod.dict);
+//    }
+//    
+//    NSLog(@"DELETING ASIN: %@", [favs[0] ASIN]);
+//    [dataManager postFavoriteDelete:@"Mohsin" withASIN:[favs[0] ASIN]];
+//    
+//    favs = [dataManager getFavorites:@"Mohsin"];
+//    for( int i = 0; i < [favs count]; ++i)
+//    {
+//        prod = favs[i];
+//        NSLog(@"%@", prod.dict);
+//    }
+    
+    //[dataManager postYesOrNo:@"Mohsin" withASIN:[prods[0] ASIN] withYesOrNo:NO];
     //NSLog(@"%@", suggestions);
     //ritProduct* product = [[ritProduct alloc] initWithData:suggestions];
     //NSLog(@"%@", [product dict]);

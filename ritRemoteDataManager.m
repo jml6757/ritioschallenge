@@ -14,6 +14,26 @@
 
 #define SERVER @"http://129.21.148.40:8080/AmazonIntelliBack/rest/iosInformationService"
 
+- (NSString*)formatData: (NSString*)contact withKeys:(NSMutableArray*)keys withVals:(NSMutableArray*)vals
+{
+    NSMutableString* data = [[NSMutableString alloc] init];
+    [data appendFormat:@"%@", _appId];
+    [data appendFormat:@"|%@", contact];
+    for (int i = 0; i < [keys count]; ++i) {
+        [data appendFormat:@"|%@=%@", [keys objectAtIndex:i], [vals objectAtIndex:i]];
+    }
+    return data;
+}
+
+- (NSString*)formatProductData: (NSString*)contact withOption:(NSString*) option
+{
+    NSMutableString* data = [[NSMutableString alloc] init];
+    [data appendFormat:@"%@", _appId];
+    [data appendFormat:@"|%@", contact];
+    [data appendFormat:@"|%@", option];
+    return data;
+}
+
 - (id)init
 {
     //UIDevice* device = [[UIDevice alloc] init];
@@ -26,6 +46,7 @@
     //Format URL and data
     NSString *url = [[NSString alloc] initWithFormat:@"%@/%@/", SERVER, requestType];
     NSLog(@"POST URL: %@", url);
+    NSLog(@"POST BODY: %@", data);
     NSData *postData = [data dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
     
     //Format request
@@ -54,22 +75,11 @@
     NSError *requestError;
     NSURLResponse *urlResponse = nil;
     NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:&urlResponse error:&requestError];
-    
     //Return in string form
     NSString* ret = [[NSString alloc] initWithData:response encoding:NSASCIIStringEncoding];
     return ret;
 }
 
-- (NSString*)formatData: (NSString*)contact withKeys:(NSMutableArray*)keys withVals:(NSMutableArray*)vals
-{
-    NSMutableString* data = [[NSMutableString alloc] init];
-    [data appendFormat:@"%@", _appId];
-    [data appendFormat:@"|%@", contact];
-    for (int i = 0; i < [keys count]; ++i) {
-        [data appendFormat:@"|%@=%@", [keys objectAtIndex:i], [vals objectAtIndex:i]];
-    }
-    return data;
-}
 
 - (void) postContact: (NSString*) contact withAttributes:(ritAttributes*) attributes
 {
@@ -84,32 +94,28 @@
     [self serverPost:@"POSTPerson" withData:post];
 }
 
-- (void) postYesOrNo: (NSString*) contact withYesOrNo:(BOOL) yesOrNo
+- (void) postYesOrNo: (NSString*) contact withASIN:(NSString*) ASIN withYesOrNo:(BOOL) yesOrNo
 {
     NSLog(@"Posting YesOrNo");
-    NSMutableArray* keys = [[NSMutableArray alloc] init];
-    [keys addObject:@"key0"];
-    [keys addObject:@"key1"];
-    
-    NSMutableArray* vals = [[NSMutableArray alloc] init];
-    [vals addObject:@"0"];
-    [vals addObject:@"1"];
-    
-    NSString* post = [self formatData:contact withKeys:keys withVals:vals];
-    [self serverPost:@"POSTYesOrNo" withData:post];
+    NSString* option = [[NSString alloc] initWithFormat:@"%@|%d", ASIN, yesOrNo ];
+    NSString* post = [self formatProductData:contact withOption:option];
+    [self serverPost:@"POSTYesOrNoInfo" withData:post];
 }
 
-- (void) postFavorite: (NSString*) contact withFavorite:(NSString*) favorite
+- (void) postFavorite: (NSString*) contact withASIN:(NSString*) ASIN
 {
     NSLog(@"Posting Favorite");
-    NSMutableArray* keys = [[NSMutableArray alloc] init];
-    [keys addObject:@"key"];
-    
-    NSMutableArray* vals = [[NSMutableArray alloc] init];
-    [vals addObject:@"0"];
-    
-    NSString* post = [self formatData:contact withKeys:keys withVals:vals];
+    NSString* option = ASIN;
+    NSString* post = [self formatProductData:contact withOption:option];
     [self serverPost:@"POSTFavorite" withData:post];
+}
+
+- (void) postFavoriteDelete: (NSString*) contact withASIN:(NSString*) ASIN
+{
+    NSLog(@"Posting Favorite Delete");
+    NSString* option = ASIN;
+    NSString* post = [self formatProductData:contact withOption:option];
+    [self serverPost:@"POSTFavoriteDelete" withData:post];
 }
 
 - (NSMutableArray*) getSuggestions: (NSString*) contact
@@ -124,7 +130,7 @@
 {
     NSLog(@"Getting Favorites");
     NSString* tx_data = [self formatData:contact withKeys:nil withVals:nil];
-    NSString* rx_data = [self serverGet:@"GETFavorites" withData:tx_data];
+    NSString* rx_data = [self serverGet:@"GETFavorite" withData:tx_data];
     return [self parseProductData:rx_data];
 }
 
@@ -158,7 +164,8 @@
 
 - (NSMutableArray*) parseProductData: (NSString*) data
 {
-    NSMutableArray* products;
+    if([data isEqualToString:@""]) return nil;
+    NSMutableArray* products = [[NSMutableArray alloc] init];
     ritProduct* product;
     NSArray* pair;
     NSString* key;
@@ -184,12 +191,12 @@
         //Always add the key-value pair to the proeuct
         [product.dict setObject:val forKey:key];
     }
-    
+#if 0
     for(int i = 0; i < [products count]; ++i)
     {
-        NSLog(@"Parsed Product: %@\n", [products[i] dict]);
+        NSLog(@"Parsed Product: %@\n\n\n", [products[i] dict]);
     }
-    
+#endif
     return products;
 }
 

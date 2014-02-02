@@ -20,11 +20,10 @@
     - (void)serverPost:      (NSString*)requestType withData:(NSString*)data;
     - (NSString*) serverGet: (NSString*)requestType withData:(NSString*)data;
 
-    - (NSString*)formatData:  (NSString*)contact withKeys:(NSMutableArray*)keys withVals:(NSMutableArray*)vals;
-
-    - (void) postContact:    (NSString*) contact withAttributes:(ritAttributes*) attributes;
-    - (void) postYesOrNo:    (NSString*) contact withYesOrNo:(BOOL) yesOrNo;
-    - (void) postFavorite:   (NSString*) contact withFavorite:(NSString*) favorite;
+    - (void) postContact:        (NSString*) contact withAttributes:(ritAttributes*) attributes;
+    - (void) postYesOrNo:        (NSString*) contact withASIN:(NSString*) ASIN withYesOrNo:(BOOL) yesOrNo;
+    - (void) postFavorite:       (NSString*) contact withASIN:(NSString*) ASIN;
+    - (void) postFavoriteDelete: (NSString*) contact withASIN:(NSString*) ASIN;
 
     - (NSMutableArray*) getSuggestions: (NSString*) contact;
     - (NSMutableArray*) getFavorites:   (NSString*) contact;
