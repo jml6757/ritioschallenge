@@ -12,15 +12,18 @@
 
     - (id)init;
 
-    - (NSData*) serverRequest:(NSString*)request withContact:(NSString*)contact withAttributes:(NSString*)data;
+    - (void)serverPost:      (NSString*)requestType withData:(NSString*)data;
+    - (NSString*) serverGet: (NSString*)requestType withData:(NSString*)data;
+
+    - (NSString*)formatData:  (NSString*)contact withKeys:(NSMutableArray*)keys withVals:(NSMutableArray*)vals;
 
     - (void) postContact:    (NSString*) contact withAttributes:(NSMutableArray*) attributes;
     - (void) postYesOrNo:    (NSString*) contact withYesOrNo:(BOOL) yesOrNo;
     - (void) postFavorite:   (NSString*) contact withFavorite:(NSString*) favorite;
 
-    - (NSMutableArray*) getSuggestions: (NSString*) contact;
-    - (NSMutableArray*) getFavorites:   (NSString*) contact;
-    - (NSMutableArray*) getAttributes:  (NSString*) contact;
+    - (NSString*) getSuggestions: (NSString*) contact;
+    - (NSString*) getFavorites:   (NSString*) contact;
+    - (NSString*) getAttributes:  (NSString*) contact;
 
     @property NSString* appId;
 

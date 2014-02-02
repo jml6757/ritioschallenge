@@ -26,6 +26,8 @@
 		B047A69B189C6F8A00903ECD /* ritShopScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B047A69A189C6F8A00903ECD /* ritShopScreenViewController.m */; };
 		B047A6A6189CBA6400903ECD /* ritProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B047A6A5189CBA6400903ECD /* ritProfileViewController.m */; };
 		B047A6AC189CDCDE00903ECD /* ritRemoteDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B047A6AB189CDCDE00903ECD /* ritRemoteDataManager.m */; };
+		B047A6FB189E268400903ECD /* ritAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = B047A6FA189E268400903ECD /* ritAttributes.m */; };
+		B047A6FE189E283000903ECD /* ritProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = B047A6FD189E283000903ECD /* ritProduct.m */; };
 		B050D478189B63CC00E2E755 /* ritDatabaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B050D477189B63CC00E2E755 /* ritDatabaseManager.m */; };
 /* End PBXBuildFile section */
 
@@ -68,6 +70,10 @@
 		B047A6A5189CBA6400903ECD /* ritProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ritProfileViewController.m; sourceTree = "<group>"; };
 		B047A6AA189CDCDE00903ECD /* ritRemoteDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ritRemoteDataManager.h; sourceTree = "<group>"; };
 		B047A6AB189CDCDE00903ECD /* ritRemoteDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ritRemoteDataManager.m; sourceTree = "<group>"; };
+		B047A6F9189E268400903ECD /* ritAttributes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ritAttributes.h; sourceTree = "<group>"; };
+		B047A6FA189E268400903ECD /* ritAttributes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ritAttributes.m; sourceTree = "<group>"; };
+		B047A6FC189E283000903ECD /* ritProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ritProduct.h; sourceTree = "<group>"; };
+		B047A6FD189E283000903ECD /* ritProduct.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ritProduct.m; sourceTree = "<group>"; };
 		B050D476189B63CC00E2E755 /* ritDatabaseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ritDatabaseManager.h; sourceTree = "<group>"; };
 		B050D477189B63CC00E2E755 /* ritDatabaseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ritDatabaseManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -100,6 +106,10 @@
 		3F1EE6A3189B34650076B69B = {
 			isa = PBXGroup;
 			children = (
+				B047A6FC189E283000903ECD /* ritProduct.h */,
+				B047A6FD189E283000903ECD /* ritProduct.m */,
+				B047A6F9189E268400903ECD /* ritAttributes.h */,
+				B047A6FA189E268400903ECD /* ritAttributes.m */,
 				B047A6AA189CDCDE00903ECD /* ritRemoteDataManager.h */,
 				B047A6AB189CDCDE00903ECD /* ritRemoteDataManager.m */,
 				B047A6A4189CBA6400903ECD /* ritProfileViewController.h */,
@@ -279,7 +289,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				B047A69B189C6F8A00903ECD /* ritShopScreenViewController.m in Sources */,
+				B047A6FB189E268400903ECD /* ritAttributes.m in Sources */,
 				B047A6AC189CDCDE00903ECD /* ritRemoteDataManager.m in Sources */,
+				B047A6FE189E283000903ECD /* ritProduct.m in Sources */,
 				3F1EE6E5189B462B0076B69B /* ritNewContactViewController.m in Sources */,
 				3F1EE6E2189B39880076B69B /* ritGifteeViewController.m in Sources */,
 				3F1EE6C0189B34650076B69B /* ritAppDelegate.m in Sources */,

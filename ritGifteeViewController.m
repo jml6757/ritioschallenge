@@ -11,6 +11,9 @@
 #import "ritShopScreenViewController.h"
 #import "ritProfileViewController.h"
 #import "ritRemoteDataManager.h"
+#import "ritAttributes.h"
+#import "ritProduct.h"
+
 
 @interface ritGifteeViewController ()
 
@@ -73,7 +76,24 @@
     
     
     ritRemoteDataManager* dataManager = [[ritRemoteDataManager alloc] init];
-    [dataManager postContact:@"Mohsin" withAttributes:nil];
+    //[dataManager getAttributes:@"Mohsin"];
+    ritAttributes* attr = [[ritAttributes alloc] init];
+    [attr setAttribute:@"electronics" withValue:@"0"];
+    [attr setAttribute:@"reading"     withValue:@"0"];
+    [attr setAttribute:@"travelling"  withValue:@"0"];
+    [attr setAttribute:@"sports"      withValue:@"5"];
+    [attr setAttribute:@"videogames"  withValue:@"0"];
+    [attr setAttribute:@"music"       withValue:@"0"];
+    [attr setAttribute:@"movies"      withValue:@"10"];
+    [attr setAttribute:@"fashion"     withValue:@"0"];
+    [attr setAttribute:@"cooking"     withValue:@"0"];
+    [attr setAttribute:@"art"         withValue:@"0"];
+    [attr setAttribute:@"toys"        withValue:@"0"];
+
+    
+    [dataManager postContact:@"Mohsin" withAttributes:attr];
+    NSString* d = [dataManager getAttributes:@"Mohsin"];
+    [attr parseResponse:d];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -198,8 +218,9 @@
 
 - (IBAction)unwindToGifteeViewController:(UIStoryboardSegue *)unwindSegue
 {
-    //updateList();
+    
 }
+
 - (IBAction)unwindToGifteeViewControllerWithInfo:(UIStoryboardSegue *)unwindSegue
 {
     ritNewContactViewController* sourceController = unwindSegue.sourceViewController;
