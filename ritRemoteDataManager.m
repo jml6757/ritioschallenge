@@ -25,6 +25,7 @@
 {
     //Format URL and data
     NSString *url = [[NSString alloc] initWithFormat:@"%@/%@/", SERVER, requestType];
+    NSLog(@"POST URL: %@", url);
     NSData *postData = [data dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
     
     //Format request
@@ -42,6 +43,7 @@
 {
     //Format URL
     NSString *urlstr = [[NSString alloc] initWithFormat:@"%@/%@/%@", SERVER, requestType, data];
+    NSLog(@"GET URL: %@", urlstr);
     NSURL *url = [[NSURL alloc] initWithString:[urlstr stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]];
     
     //Format Request
@@ -110,29 +112,85 @@
     [self serverPost:@"POSTFavorite" withData:post];
 }
 
-- (NSString*) getSuggestions: (NSString*) contact
+- (NSMutableArray*) getSuggestions: (NSString*) contact
 {
     NSLog(@"Getting Suggestions");
     NSString* tx_data = [self formatData:contact withKeys:nil withVals:nil];
-    return [self serverGet:@"GETSuggestions" withData:tx_data];
+    NSString* rx_data =  [self serverGet:@"GETSuggestion" withData:tx_data];
+    return [self parseProductData:rx_data];
 }
 
-- (NSString*) getFavorites:   (NSString*) contact
+- (NSMutableArray*) getFavorites:   (NSString*) contact
 {
     NSLog(@"Getting Favorites");
     NSString* tx_data = [self formatData:contact withKeys:nil withVals:nil];
-    return [self serverGet:@"GETFavorites" withData:tx_data];
-
+    NSString* rx_data = [self serverGet:@"GETFavorites" withData:tx_data];
+    return [self parseProductData:rx_data];
 }
 
-- (NSString*) getAttributes:  (NSString*) contact
+- (ritAttributes*) getAttributes:  (NSString*) contact
 {
     NSLog(@"Getting Attributes");
     NSString* tx_data = [self formatData:contact withKeys:nil withVals:nil];
-    NSString* d = [self serverGet:@"GETAttributes" withData:tx_data];
-    NSLog(@"%@", d);
-    return d;
+    NSString* rx_data = [self serverGet:@"GETAttributes" withData:tx_data];
+    return [self parseAttributeData:rx_data];
+}
 
+- (ritAttributes*) parseAttributeData: (NSString*) data
+{
+    ritAttributes* attr = [[ritAttributes alloc] init];
+    NSArray* pair;
+    
+    //Separate key-value pairs from data
+    NSArray* mapping = [data componentsSeparatedByString:@"|"];
+    
+    //Store key-value pairs to attributes object
+    for(int i = 0; i < [mapping count]; ++i)
+    {
+        pair = [mapping[i] componentsSeparatedByString:@"="];
+        [attr setAttribute:pair[0] withValue:pair[1]];
+    }
+    
+    //Return attributes object
+    NSLog(@"Parsed Attributes: %@", attr.dict);
+    return attr;
+}
+
+- (NSMutableArray*) parseProductData: (NSString*) data
+{
+    NSMutableArray* products;
+    ritProduct* product;
+    NSArray* pair;
+    NSString* key;
+    NSString* val;
+    
+    //Separate key-value pairs
+    NSArray* mapping = [data componentsSeparatedByString:@"|"];
+    
+    //Store key-value pairs to product objects
+    for(int i = 0; i < [mapping count]; ++i)
+    {
+        pair = [mapping[i] componentsSeparatedByString:@"="];
+        key = pair[0];
+        val = pair[1];
+        
+        //If we got a new ASIN this means that we got a new product
+        if([key isEqualToString:@"ASIN"])
+        {
+            product = [[ritProduct alloc] init];
+            [products addObject:product];
+        }
+        
+        //Always add the key-value pair to the proeuct
+        [product.dict setObject:val forKey:key];
+    }
+    
+    for(int i = 0; i < [products count]; ++i)
+    {
+        NSLog(@"Parsed Product: %@\n", [products[i] dict]);
+    }
+    
+    return products;
 }
 
 @end

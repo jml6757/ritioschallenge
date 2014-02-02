@@ -16,25 +16,6 @@
     return self;
 }
 
--(id) initWithData:(NSString*) data
-{
-    _dict = [[NSMutableDictionary alloc] init];
-    [self parseResponse:data];
-    return self;
-}
-
--(void) parseResponse:(NSString*)data
-{
-    NSArray* pair;
-    NSArray* mapping = [data componentsSeparatedByString:@"|"];
-    for(int i = 0; i < [mapping count]; ++i)
-    {
-        pair = [mapping[i] componentsSeparatedByString:@"="];
-        [_dict setObject:pair[1] forKey:pair[0]];
-    }
-    NSLog(@"YOU GOT DICKED: %@", _dict);
-}
-
 -(NSString*)  ASIN
 {
     return [_dict valueForKey:@"ASIN"];

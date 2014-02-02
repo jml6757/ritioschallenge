@@ -7,6 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ritAttributes.h"
+
+#define KEY_VAL_TOKEN @"|"
+#define ATTR_TOKEN    @"="
+#define PROD_TOKEN    @"="
 
 @interface ritRemoteDataManager : NSObject
 
@@ -17,13 +22,16 @@
 
     - (NSString*)formatData:  (NSString*)contact withKeys:(NSMutableArray*)keys withVals:(NSMutableArray*)vals;
 
-    - (void) postContact:    (NSString*) contact withAttributes:(NSMutableArray*) attributes;
+    - (void) postContact:    (NSString*) contact withAttributes:(ritAttributes*) attributes;
     - (void) postYesOrNo:    (NSString*) contact withYesOrNo:(BOOL) yesOrNo;
     - (void) postFavorite:   (NSString*) contact withFavorite:(NSString*) favorite;
 
-    - (NSString*) getSuggestions: (NSString*) contact;
-    - (NSString*) getFavorites:   (NSString*) contact;
-    - (NSString*) getAttributes:  (NSString*) contact;
+    - (NSMutableArray*) getSuggestions: (NSString*) contact;
+    - (NSMutableArray*) getFavorites:   (NSString*) contact;
+    - (ritAttributes*)  getAttributes:  (NSString*) contact;
+
+    - (ritAttributes*)  parseAttributeData:  (NSString*) data;
+    - (NSMutableArray*) parseProductData:    (NSString*) data;
 
     @property NSString* appId;
 

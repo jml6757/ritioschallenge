@@ -92,8 +92,14 @@
 
     
     [dataManager postContact:@"Mohsin" withAttributes:attr];
-    NSString* d = [dataManager getAttributes:@"Mohsin"];
-    [attr parseResponse:d];
+    //[dataManager getAttributes:@"Mohsin"];
+    
+    [dataManager getSuggestions:@"Mohsin"];
+    //NSLog(@"%@", suggestions);
+    //ritProduct* product = [[ritProduct alloc] initWithData:suggestions];
+    //NSLog(@"%@", [product dict]);
+    //NSString* d = [dataManager getAttributes:@"Mohsin"];
+    //[attr parseResponse:d];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  

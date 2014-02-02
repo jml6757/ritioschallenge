@@ -12,9 +12,7 @@
 
     @property NSMutableDictionary* dict;
 
-    -(id)   init;
-    -(id)   initWithData:(NSString*) data;
-    -(void) parseResponse:(NSString*)data;
+    -(id) init;
 
     -(NSString*)  ASIN;
     -(NSString*)  name;

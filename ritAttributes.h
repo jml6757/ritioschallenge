@@ -15,6 +15,5 @@
     -(id)   init;
     -(id)   getAttribute:(NSString*) attr;
     -(void) setAttribute:(NSString*) attr withValue:(NSString*)val;
-    -(void) parseResponse:(NSString*)data;
 
 @end
