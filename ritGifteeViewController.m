@@ -14,7 +14,6 @@
 #import "ritAttributes.h"
 #import "ritProduct.h"
 
-
 @interface ritGifteeViewController ()
 
 @end
@@ -30,11 +29,59 @@
     return self;
 }
 
+- (void) viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    NSMutableArray* cells = [[NSMutableArray alloc] initWithArray:[self.tableView visibleCells]];
+    for(int i = 0; i < [cells count]; ++i)
+    {
+        [cells[i] setUserInteractionEnabled:YES];
+    }
+    [self.tableView reloadData];
+    _globalAnimator = [[UIDynamicAnimator alloc] initWithReferenceView:self.view];
+    
+}
+
 - (void) tableView: (UITableView *) tableView didSelectRowAtIndexPath: (NSIndexPath *) indexPath
 {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
     _selectedContact = [tableView cellForRowAtIndexPath:indexPath].textLabel.text;
-    [self performSegueWithIdentifier:@"ShopScreenSegue" sender:(self)];
+    
+    //Point to snap to
+    CGRect screenRect = [[UIScreen mainScreen] bounds];
+    CGPoint point = CGPointMake(screenRect.size.width/2, screenRect.size.height/3);
+    
+    //Cell to snap to point
+    UITableViewCell* cell = [tableView cellForRowAtIndexPath:indexPath];
+    
+    //Set the cell to snap to the point
+    _snapBehavior = [[UISnapBehavior alloc] initWithItem:cell snapToPoint:point];
+    
+    //Add gravity to all other cells
+    NSMutableArray* cells = [[NSMutableArray alloc] initWithArray:[tableView visibleCells]];
+    for(int i = 0; i < [cells count]; ++i)
+    {
+        [cells[i] setUserInteractionEnabled:NO];
+    }
+    [cells removeObject:cell];
+    _gravityBehavior = [[UIGravityBehavior alloc] initWithItems:cells];
+    _gravityBehavior.magnitude = 1;
+    
+    //Add behaviors to the animator (this causes them to run)
+    [_globalAnimator addBehavior:_snapBehavior];
+    [_globalAnimator addBehavior:_gravityBehavior];
+    
+    //ritShopScreenViewController* shopView = [[ritShopScreenViewController alloc] initWithCell:cell];
+    double delayInSeconds = 0.74;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+    
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void)
+    {
+        [self performSegueWithIdentifier:@"ShopScreenSegue" sender:(self)];
+    });
 }
+
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     
@@ -46,95 +93,13 @@
     }
 }
 
--(void)handleLongPress:(UILongPressGestureRecognizer *)gestureRecognizer
-{
-    CGPoint p = [gestureRecognizer locationInView:self.tableView];
-    
-    NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:p];
-    if (indexPath != nil)
-    {
-        //NSLog(@"long press on table view but not on a row");
-        ritProfileViewController* profileView = [[ritProfileViewController alloc] init];
-        profileView.modalPresentationStyle =  UIModalTransitionStyleCrossDissolve;
-        [self presentViewController:profileView animated:YES completion:nil];
-    }
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    //Add long press recognizer
-    UILongPressGestureRecognizer *lpgr = [[UILongPressGestureRecognizer alloc]
-                                          initWithTarget:self action:@selector(handleLongPress:)];
-    lpgr.minimumPressDuration = 2.0; //seconds
-    lpgr.delegate = self;
-    [self.tableView addGestureRecognizer:lpgr];
-    
     //Add database manager
     _dbManager = [[ritDatabaseManager alloc] init];
     
-    
-    ritRemoteDataManager* dataManager = [[ritRemoteDataManager alloc] init];
-    //[dataManager getAttributes:@"Mohsin"];
-    ritAttributes* attr = [[ritAttributes alloc] init];
-    [attr setAttribute:@"electronics" withValue:@"0"];
-    [attr setAttribute:@"reading"     withValue:@"0"];
-    [attr setAttribute:@"travelling"  withValue:@"0"];
-    [attr setAttribute:@"sports"      withValue:@"5"];
-    [attr setAttribute:@"videogames"  withValue:@"0"];
-    [attr setAttribute:@"music"       withValue:@"0"];
-    [attr setAttribute:@"movies"      withValue:@"10"];
-    [attr setAttribute:@"fashion"     withValue:@"0"];
-    [attr setAttribute:@"cooking"     withValue:@"0"];
-    [attr setAttribute:@"art"         withValue:@"0"];
-    [attr setAttribute:@"toys"        withValue:@"0"];
-
-    
-    //[dataManager postContact:@"Mohsin" withAttributes:attr];
-    //ritAttributes* a = [dataManager getAttributes:@"Mohsin"];
-    //NSLog(@"%@", a.dict);
-    
-    
-    //ritProduct* prod;
-    //NSArray* prods = [dataManager getSuggestions:@"Mohsin"];
-//    for( int i = 0; i < [prods count]; ++i)
-//    {
-//        prod = prods[i];
-//        NSLog(@"%@", prod.dict);
-//    }
-//    prod = prods[0];
-//    [dataManager postFavorite:@"Mohsin" withASIN:[prod ASIN]];
-    
-//    NSArray* favs = [dataManager getFavorites:@"Mohsin"];
-//    ritProduct* prod;
-//    for( int i = 0; i < [favs count]; ++i)
-//    {
-//        prod = favs[i];
-//        NSLog(@"%@", prod.dict);
-//    }
-//    
-//    NSLog(@"DELETING ASIN: %@", [favs[0] ASIN]);
-//    [dataManager postFavoriteDelete:@"Mohsin" withASIN:[favs[0] ASIN]];
-//    
-//    favs = [dataManager getFavorites:@"Mohsin"];
-//    for( int i = 0; i < [favs count]; ++i)
-//    {
-//        prod = favs[i];
-//        NSLog(@"%@", prod.dict);
-//    }
-    
-    //[dataManager postYesOrNo:@"Mohsin" withASIN:[prods[0] ASIN] withYesOrNo:NO];
-    //NSLog(@"%@", suggestions);
-    //ritProduct* product = [[ritProduct alloc] initWithData:suggestions];
-    //NSLog(@"%@", [product dict]);
-    //NSString* d = [dataManager getAttributes:@"Mohsin"];
-    //[attr parseResponse:d];
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)didReceiveMemoryWarning
@@ -174,6 +139,7 @@
 }
 
 
+
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -199,42 +165,8 @@
     }   
 }
 
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a story board-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-
- */
-
 - (IBAction)addGiftee:(id)sender {
-    UIActionSheet *popup = [[UIActionSheet alloc] initWithTitle:@"Select Contact Option:" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:
-                            @"Contact List",
-                            @"New Contact",
-                            nil];
-    popup.tag = 1;
-    [popup showInView:[UIApplication sharedApplication].keyWindow];
+    [self performSegueWithIdentifier:@"NewContactSegue" sender:(self)];
 }
 
 - (void)actionSheet:(UIActionSheet *)popup clickedButtonAtIndex:(NSInteger)buttonIndex {
@@ -254,16 +186,18 @@
 
 - (IBAction)unwindToGifteeViewController:(UIStoryboardSegue *)unwindSegue
 {
-    
+    [self.view setNeedsDisplay];
 }
 
 - (IBAction)unwindToGifteeViewControllerWithInfo:(UIStoryboardSegue *)unwindSegue
 {
     ritNewContactViewController* sourceController = unwindSegue.sourceViewController;
-    NSString* newName = sourceController.contactName.text;
-    if([newName length] > 0 && ([_dbManager hasContact:newName] == NO))
+    NSString* contactName = sourceController.contactName.text;
+    ritAttributes* contactAttr = sourceController.contactAttr;
+    if([contactName length] > 0 && ([_dbManager hasContact:contactName] == NO))
     {
-        [_dbManager addContact:sourceController.contactName.text];
+        [_dbManager addContact:contactName];
+        [[ritRemoteDataManager getInstance] postContact:contactName withAttributes:contactAttr];
     }
     [self.tableView reloadData];
 }

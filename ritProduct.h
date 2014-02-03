@@ -15,7 +15,7 @@
     -(id) init;
 
     -(NSString*)  ASIN;
-    -(NSString*)  name;
+    -(NSString*)  title;
     -(NSString*)  price;
     -(NSString*)  productLink;
     -(NSString*)  imageLink;

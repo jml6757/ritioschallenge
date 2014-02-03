@@ -16,6 +16,10 @@
     - (IBAction)unwindToGifteeViewController:(UIStoryboardSegue *)unwindSegue;
     - (IBAction)unwindToGifteeViewControllerWithInfo:(UIStoryboardSegue *)unwindSegue;
 
+    @property UIDynamicAnimator* globalAnimator;
+    @property UIGravityBehavior* gravityBehavior;
+    @property UISnapBehavior* snapBehavior;
+
     @property ritDatabaseManager* dbManager;
     @property NSString* selectedContact;
 

@@ -41,6 +41,18 @@
     return self;
 }
 
++ (ritRemoteDataManager *) getInstance
+{
+    static ritRemoteDataManager *instance;
+    
+    @synchronized(self)
+    {
+        if (!instance)
+            instance = [[ritRemoteDataManager alloc] init];
+        return instance;
+    }
+}
+
 - (void)serverPost:(NSString*)requestType withData:(NSString*)data
 {
     //Format URL and data

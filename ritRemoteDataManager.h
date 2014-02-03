@@ -16,6 +16,7 @@
 @interface ritRemoteDataManager : NSObject
 
     - (id)init;
+    + (ritRemoteDataManager*) getInstance;
 
     - (void)serverPost:      (NSString*)requestType withData:(NSString*)data;
     - (NSString*) serverGet: (NSString*)requestType withData:(NSString*)data;

@@ -21,9 +21,9 @@
     return [_dict valueForKey:@"ASIN"];
 }
 
--(NSString*)  name
+-(NSString*)  title
 {
-    return [_dict valueForKey:@"name"];
+    return [_dict valueForKey:@"title"];
 }
 
 -(NSString*)  price

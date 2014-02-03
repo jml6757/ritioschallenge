@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ritAttributes.h"
 
-@interface ritNewContactViewController : UIViewController
+@interface ritNewContactViewController : UIViewController <UITextFieldDelegate>
 
+    -(IBAction)sliderAction:(id)sender;
     @property (weak, nonatomic) IBOutlet UITextField *contactName;
-    @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
+    @property (strong, nonatomic) IBOutlet ritAttributes* contactAttr;
 
 @end

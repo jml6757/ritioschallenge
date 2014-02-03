@@ -7,11 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "ritProduct.h"
 @interface ritShopScreenViewController : UIViewController
 
     @property IBOutlet NSString* contact;
-
+    @property __block ritProduct* currentlyShowing;
+    @property NSMutableArray* suggestions;
     - (IBAction)unwindToShopScreenViewController:(UIStoryboardSegue *)unwindSegue;
+    -(IBAction)handleCheckButton:(id) sender;
+    @property UIImageView *iv;
 
 @end

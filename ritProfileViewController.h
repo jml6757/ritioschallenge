@@ -9,7 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface ritProfileViewController : UIViewController
-
+@property (strong, nonatomic) UIDynamicAnimator *animator;
+@property (strong, nonatomic) NSString* contact;
     - (void) exitProfileViewController;
 
 @end

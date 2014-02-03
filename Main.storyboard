@@ -7,8 +7,6 @@
         <!--Rit Giftee View Controller - Giftees-->
         <scene sceneID="co8-cz-qrJ">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="j8I-Ac-MbL" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="A5U-s2-kUo"/>
                 <tableViewController id="cRu-zy-zeF" customClass="ritGifteeViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="asG-Fb-UJb">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -64,9 +62,11 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="aQF-KO-CLN" kind="modal" identifier="NewContactSegue" id="Sll-T3-sR5"/>
+                        <segue destination="wYm-Xs-I92" kind="modal" identifier="NewContactSegue" id="Sll-T3-sR5"/>
                     </connections>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="j8I-Ac-MbL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="A5U-s2-kUo"/>
             </objects>
             <point key="canvasLocation" x="621" y="-312"/>
         </scene>
@@ -86,7 +86,7 @@
                     <navigationItem key="navigationItem" id="yAV-bQ-9XU">
                         <barButtonItem key="rightBarButtonItem" title="Profile" id="M0Z-Gt-sHn">
                             <connections>
-                                <segue destination="yMh-UY-ovy" kind="modal" id="r54-MF-RKc"/>
+                                <segue destination="yMh-UY-ovy" kind="modal" identifier="ProfileViewSegue" id="r54-MF-RKc"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -114,7 +114,7 @@
             </objects>
             <point key="canvasLocation" x="2272" y="102"/>
         </scene>
-        <!--Rit New Contact View Controller-->
+        <!--Rit New Contact View Controller - New Contact-->
         <scene sceneID="mdr-P2-qSe">
             <objects>
                 <viewController id="aQF-KO-CLN" customClass="ritNewContactViewController" sceneMemberID="viewController">
@@ -126,29 +126,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tJw-BG-39R">
-                                <rect key="frame" x="0.0" y="23" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <items>
-                                    <navigationItem title="New Contact" id="BPn-gM-3yD">
-                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="O3c-xT-w3e">
-                                            <connections>
-                                                <segue destination="jYa-iI-XsF" kind="unwind" unwindAction="unwindToGifteeViewController:" id="Md9-zk-j2l"/>
-                                            </connections>
-                                        </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="t0E-1Y-3OF">
-                                            <connections>
-                                                <segue destination="jYa-iI-XsF" kind="unwind" unwindAction="unwindToGifteeViewControllerWithInfo:" id="N2K-Z6-8sg"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Contact Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ep7-ig-PmN">
                                 <rect key="frame" x="20" y="89" width="280" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="1pX-nj-aCB" id="E1K-lG-3yw"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Interests" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gIA-Iv-hiL">
                                 <rect key="frame" x="127" y="127" width="66" height="21"/>
@@ -158,10 +143,19 @@
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="tJw-BG-39R" firstAttribute="top" secondItem="zRc-1L-aoP" secondAttribute="bottom" constant="3" id="Ovq-Lt-RSP"/>
-                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="New Contact" id="7pz-EX-f0a">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="lWR-18-ZdF">
+                            <connections>
+                                <segue destination="jYa-iI-XsF" kind="unwind" unwindAction="unwindToGifteeViewController:" id="DeX-if-s0a"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="07Y-yE-CLF">
+                            <connections>
+                                <segue destination="jYa-iI-XsF" kind="unwind" unwindAction="unwindToGifteeViewControllerWithInfo:" id="QfJ-Gp-Up1"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="contactName" destination="ep7-ig-PmN" id="SB5-4a-FQ8"/>
                     </connections>
@@ -169,7 +163,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nBa-lW-FZb" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="jYa-iI-XsF" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1171" y="-636"/>
+            <point key="canvasLocation" x="1697" y="-636"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="7Yx-SE-EFK">
@@ -210,6 +204,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jr3-zb-dkB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1706" y="102"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="oBw-aF-5uR">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="wYm-Xs-I92" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="F5l-5V-zEd">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="aQF-KO-CLN" kind="relationship" relationship="rootViewController" id="pmN-NG-75q"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mS8-Kn-5Oi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1171" y="-636"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

@@ -22,12 +22,18 @@
 		3F1EE6DF189B36180076B69B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F1EE6DE189B36180076B69B /* Main.storyboard */; };
 		3F1EE6E2189B39880076B69B /* ritGifteeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F1EE6E1189B39880076B69B /* ritGifteeViewController.m */; };
 		3F1EE6E5189B462B0076B69B /* ritNewContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F1EE6E4189B462B0076B69B /* ritNewContactViewController.m */; };
+		B014AECD189F57B400E81518 /* gift_yes.png in Resources */ = {isa = PBXBuildFile; fileRef = B014AEC9189F57B400E81518 /* gift_yes.png */; };
+		B014AECE189F57B400E81518 /* gift_no.png in Resources */ = {isa = PBXBuildFile; fileRef = B014AECA189F57B400E81518 /* gift_no.png */; };
+		B014AECF189F57B400E81518 /* appiconResized.png in Resources */ = {isa = PBXBuildFile; fileRef = B014AECB189F57B400E81518 /* appiconResized.png */; };
+		B014AED0189F57B400E81518 /* appiconResized (1).png in Resources */ = {isa = PBXBuildFile; fileRef = B014AECC189F57B400E81518 /* appiconResized (1).png */; };
 		B047A698189C49DE00903ECD /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B047A697189C49DE00903ECD /* libsqlite3.dylib */; };
 		B047A69B189C6F8A00903ECD /* ritShopScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B047A69A189C6F8A00903ECD /* ritShopScreenViewController.m */; };
 		B047A6A6189CBA6400903ECD /* ritProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B047A6A5189CBA6400903ECD /* ritProfileViewController.m */; };
 		B047A6AC189CDCDE00903ECD /* ritRemoteDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B047A6AB189CDCDE00903ECD /* ritRemoteDataManager.m */; };
 		B047A6FB189E268400903ECD /* ritAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = B047A6FA189E268400903ECD /* ritAttributes.m */; };
 		B047A6FE189E283000903ECD /* ritProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = B047A6FD189E283000903ECD /* ritProduct.m */; };
+		B04D6643189EEFF50098D68B /* ritBackgroundTask.m in Sources */ = {isa = PBXBuildFile; fileRef = B04D6642189EEFF50098D68B /* ritBackgroundTask.m */; };
+		B04D6646189EF5170098D68B /* ritQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = B04D6645189EF5170098D68B /* ritQueue.m */; };
 		B050D478189B63CC00E2E755 /* ritDatabaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B050D477189B63CC00E2E755 /* ritDatabaseManager.m */; };
 /* End PBXBuildFile section */
 
@@ -63,6 +69,10 @@
 		3F1EE6E1189B39880076B69B /* ritGifteeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ritGifteeViewController.m; sourceTree = "<group>"; };
 		3F1EE6E3189B462B0076B69B /* ritNewContactViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ritNewContactViewController.h; sourceTree = "<group>"; };
 		3F1EE6E4189B462B0076B69B /* ritNewContactViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ritNewContactViewController.m; sourceTree = "<group>"; };
+		B014AEC9189F57B400E81518 /* gift_yes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gift_yes.png; sourceTree = "<group>"; };
+		B014AECA189F57B400E81518 /* gift_no.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gift_no.png; sourceTree = "<group>"; };
+		B014AECB189F57B400E81518 /* appiconResized.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appiconResized.png; sourceTree = "<group>"; };
+		B014AECC189F57B400E81518 /* appiconResized (1).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appiconResized (1).png"; sourceTree = "<group>"; };
 		B047A697189C49DE00903ECD /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		B047A699189C6F8A00903ECD /* ritShopScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ritShopScreenViewController.h; sourceTree = "<group>"; };
 		B047A69A189C6F8A00903ECD /* ritShopScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ritShopScreenViewController.m; sourceTree = "<group>"; };
@@ -74,6 +84,10 @@
 		B047A6FA189E268400903ECD /* ritAttributes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ritAttributes.m; sourceTree = "<group>"; };
 		B047A6FC189E283000903ECD /* ritProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ritProduct.h; sourceTree = "<group>"; };
 		B047A6FD189E283000903ECD /* ritProduct.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ritProduct.m; sourceTree = "<group>"; };
+		B04D6641189EEFF50098D68B /* ritBackgroundTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ritBackgroundTask.h; sourceTree = "<group>"; };
+		B04D6642189EEFF50098D68B /* ritBackgroundTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ritBackgroundTask.m; sourceTree = "<group>"; };
+		B04D6644189EF5170098D68B /* ritQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ritQueue.h; sourceTree = "<group>"; };
+		B04D6645189EF5170098D68B /* ritQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ritQueue.m; sourceTree = "<group>"; };
 		B050D476189B63CC00E2E755 /* ritDatabaseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ritDatabaseManager.h; sourceTree = "<group>"; };
 		B050D477189B63CC00E2E755 /* ritDatabaseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ritDatabaseManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -106,12 +120,16 @@
 		3F1EE6A3189B34650076B69B = {
 			isa = PBXGroup;
 			children = (
+				B04D6644189EF5170098D68B /* ritQueue.h */,
+				B04D6645189EF5170098D68B /* ritQueue.m */,
 				B047A6FC189E283000903ECD /* ritProduct.h */,
 				B047A6FD189E283000903ECD /* ritProduct.m */,
 				B047A6F9189E268400903ECD /* ritAttributes.h */,
 				B047A6FA189E268400903ECD /* ritAttributes.m */,
 				B047A6AA189CDCDE00903ECD /* ritRemoteDataManager.h */,
 				B047A6AB189CDCDE00903ECD /* ritRemoteDataManager.m */,
+				B04D6641189EEFF50098D68B /* ritBackgroundTask.h */,
+				B04D6642189EEFF50098D68B /* ritBackgroundTask.m */,
 				B047A6A4189CBA6400903ECD /* ritProfileViewController.h */,
 				B047A6A5189CBA6400903ECD /* ritProfileViewController.m */,
 				B050D476189B63CC00E2E755 /* ritDatabaseManager.h */,
@@ -154,9 +172,9 @@
 		3F1EE6B5189B34650076B69B /* ritioschallenge */ = {
 			isa = PBXGroup;
 			children = (
+				3F1EE6C1189B34650076B69B /* Images.xcassets */,
 				3F1EE6BE189B34650076B69B /* ritAppDelegate.h */,
 				3F1EE6BF189B34650076B69B /* ritAppDelegate.m */,
-				3F1EE6C1189B34650076B69B /* Images.xcassets */,
 				3F1EE6B6189B34650076B69B /* Supporting Files */,
 			);
 			path = ritioschallenge;
@@ -165,6 +183,10 @@
 		3F1EE6B6189B34650076B69B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				B014AEC9189F57B400E81518 /* gift_yes.png */,
+				B014AECA189F57B400E81518 /* gift_no.png */,
+				B014AECB189F57B400E81518 /* appiconResized.png */,
+				B014AECC189F57B400E81518 /* appiconResized (1).png */,
 				3F1EE6B7189B34650076B69B /* ritioschallenge-Info.plist */,
 				3F1EE6B8189B34650076B69B /* InfoPlist.strings */,
 				3F1EE6BB189B34650076B69B /* main.m */,
@@ -268,8 +290,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				3F1EE6DF189B36180076B69B /* Main.storyboard in Resources */,
+				B014AECD189F57B400E81518 /* gift_yes.png in Resources */,
 				3F1EE6BA189B34650076B69B /* InfoPlist.strings in Resources */,
+				B014AECE189F57B400E81518 /* gift_no.png in Resources */,
 				3F1EE6C2189B34650076B69B /* Images.xcassets in Resources */,
+				B014AECF189F57B400E81518 /* appiconResized.png in Resources */,
+				B014AED0189F57B400E81518 /* appiconResized (1).png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,6 +318,8 @@
 				B047A6FB189E268400903ECD /* ritAttributes.m in Sources */,
 				B047A6AC189CDCDE00903ECD /* ritRemoteDataManager.m in Sources */,
 				B047A6FE189E283000903ECD /* ritProduct.m in Sources */,
+				B04D6643189EEFF50098D68B /* ritBackgroundTask.m in Sources */,
+				B04D6646189EF5170098D68B /* ritQueue.m in Sources */,
 				3F1EE6E5189B462B0076B69B /* ritNewContactViewController.m in Sources */,
 				3F1EE6E2189B39880076B69B /* ritGifteeViewController.m in Sources */,
 				3F1EE6C0189B34650076B69B /* ritAppDelegate.m in Sources */,
@@ -416,10 +444,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ritioschallenge/ritioschallenge-Prefix.pch";
 				INFOPLIST_FILE = "ritioschallenge/ritioschallenge-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -429,10 +460,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ritioschallenge/ritioschallenge-Prefix.pch";
 				INFOPLIST_FILE = "ritioschallenge/ritioschallenge-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
